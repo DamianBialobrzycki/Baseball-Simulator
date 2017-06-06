@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baseball_Simulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Baseball Simulator" Height="350" Width="525">
+    <Window.Resources>
+        <local:BaseballSimulator x:Key="baseballSimulator"/>
+    </Window.Resources>
+    
+    <Grid Margin="5" DataContext="{StaticResource ResourceKey=baseballSimulator}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,10,0">
+            <TextBlock Text="Trajectory" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding Trajectory, Mode=TwoWay}" Margin="0,0,0,5"/>
+            <TextBlock Text="Distance" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding Distance, Mode=TwoWay}" Margin="0,0,0,5"/>
+            <Button Content="Play ball!" Click="Button_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Pitcher says" Margin="0,0,0,5"/>
+            <ListView ItemsSource="{Binding PitcherSays}" Height="125"/>
+            <TextBlock Text="Fan says" Margin="0,0,0,5"/>
+            <ListView ItemsSource="{Binding FanSays}" Height="125"/>
+        </StackPanel>
     </Grid>
 </Window>

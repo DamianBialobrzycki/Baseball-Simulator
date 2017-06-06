@@ -20,9 +20,18 @@ namespace Baseball_Simulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        BaseballSimulator baseballSimulator;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            baseballSimulator = FindResource("baseballSimulator") as BaseballSimulator;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            baseballSimulator.PlayBall();
         }
     }
 }
